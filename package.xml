@@ -11,8 +11,8 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <build_depend>libgazebo11-dev</build_depend>
-  <build_depend>ignition-math6</build_depend>
+  <depend>libgazebo11-dev</depend>
+  <depend>ignition-math6</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
