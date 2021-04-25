@@ -13,10 +13,8 @@
 // limitations under the License.
 
 #include "gazebo/common/Plugin.hh"
-#include "gazebo/physics/Collision.hh"
 #include "gazebo/physics/Link.hh"
 #include "gazebo/physics/Model.hh"
-#include "gazebo/physics/PhysicsEngine.hh"
 #include "gazebo/physics/Shape.hh"
 #include "gazebo/physics/World.hh"
 #include "gazebo/transport/TransportTypes.hh"

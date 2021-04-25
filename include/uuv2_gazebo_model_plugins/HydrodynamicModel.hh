@@ -24,12 +24,11 @@
 #include <map>
 
 #include "gazebo/physics/Link.hh"
-#include "gazebo/physics/Model.hh"
-#include "gazebo/physics/Collision.hh"
-#include "gazebo/physics/Shape.hh"
 
 #include "eigen3/Eigen/Core"
 #include "eigen3/Eigen/Geometry"
+
+#include "sdf/Element.hh"
 
 #include "uuv2_gazebo_model_plugins/Def.hh"
 #include "uuv2_gazebo_model_plugins/BuoyantObject.hh"

@@ -15,6 +15,7 @@
 #include "uuv2_gazebo_model_plugins/HydrodynamicModel.hh"
 
 #include "gazebo/common/Assert.hh"
+#include "gazebo/physics/Model.hh"
 
 namespace gazebo
 {
