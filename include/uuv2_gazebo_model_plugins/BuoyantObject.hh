@@ -12,18 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/// \file buoyant_object.hpp
+/// \file BuoyantObject.hh
 /// \brief Description of a buoyant object
 
-#ifndef UUV2_GAZEBO_MODEL_PLUGINS__BUOYANT_OBJECT_HPP_
-#define UUV2_GAZEBO_MODEL_PLUGINS__BUOYANT_OBJECT_HPP_
+#ifndef UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HH_
+#define UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HH_
 
 #include <string>
 #include <map>
 
 #include "gazebo/physics/Link.hh"
-#include "gazebo/physics/Collision.hh"
-#include "gazebo/physics/Shape.hh"
 
 #define RESTORING_FORCE   "restoring_force"
 
@@ -240,4 +238,4 @@ protected:
 };
 }  // namespace gazebo
 
-#endif  // UUV2_GAZEBO_MODEL_PLUGINS__BUOYANT_OBJECT_HPP_
+#endif  // UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HH_

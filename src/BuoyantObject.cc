@@ -16,9 +16,9 @@
 #include <cmath>
 #include <string>
 
+#include "gazebo/common/Assert.hh"
 
 #include "uuv2_gazebo_model_plugins/BuoyantObject.hh"
-#include "gazebo/common/Assert.hh"
 
 namespace gazebo
 {
