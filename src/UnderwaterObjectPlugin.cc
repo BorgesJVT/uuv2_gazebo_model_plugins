@@ -1,5 +1,4 @@
-// Copyright (c) 2016 The UUV Simulator Authors.
-// All rights reserved.
+// Copyright (c) 2016 The UUV Simulator Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "gazebo/common/Plugin.hh"
 #include "gazebo/physics/Collision.hh"
 #include "gazebo/physics/Link.hh"
 #include "gazebo/physics/Model.hh"
@@ -25,10 +25,9 @@
 #include "uuv2_gazebo_model_plugins/UnderwaterObjectPlugin.hh"
 #include "uuv2_gazebo_model_plugins/Def.hh"
 
+GZ_REGISTER_MODEL_PLUGIN(gazebo::UnderwaterObjectPlugin)
 namespace gazebo
 {
-
-GZ_REGISTER_MODEL_PLUGIN(UnderwaterObjectPlugin)
 
 /////////////////////////////////////////////////
 UnderwaterObjectPlugin::UnderwaterObjectPlugin()
@@ -148,7 +147,7 @@ void UnderwaterObjectPlugin::Load(
 
       this->models[link] = hydro;
       this->models[link]->Print("all");
-    }  // for each link mentioned in plugin sdf
+    }   // for each link mentioned in plugin sdf
   }
 
   // Connect the update event callback

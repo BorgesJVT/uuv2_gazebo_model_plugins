@@ -16,12 +16,13 @@
 /// \brief Class declaration for the underwater objects subject to buoyancy,
 ///        lift and drag forces.
 
-#ifndef UUV2_GAZEBO_MODEL_PLUGINS__UNDERWATER_OBJECT_PLUGIN_HH__
-#define UUV2_GAZEBO_MODEL_PLUGINS__UNDERWATER_OBJECT_PLUGIN_HH__
+#ifndef UUV2_GAZEBO_MODEL_PLUGINS__UNDERWATEROBJECTPLUGIN_HH_
+#define UUV2_GAZEBO_MODEL_PLUGINS__UNDERWATEROBJECTPLUGIN_HH_
 
 #include <map>
 #include <string>
 
+#include "gazebo/gazebo.hh"
 #include "gazebo/msgs/msgs.hh"
 
 #include "uuv2_gazebo_model_plugins/HydrodynamicModel.hh"
@@ -30,6 +31,7 @@
 namespace gazebo
 {
 /// \brief Gazebo model plugin class for underwater objects
+
 class UnderwaterObjectPlugin : public gazebo::ModelPlugin
 {
   /// \brief Constructor
@@ -171,4 +173,4 @@ protected:
 };
 }  // namespace gazebo
 
-#endif  // UUV2_GAZEBO_MODEL_PLUGINS__UNDERWATER_OBJECT_PLUGIN_HH__
+#endif  // UUV2_GAZEBO_MODEL_PLUGINS__UNDERWATEROBJECTPLUGIN_HH_

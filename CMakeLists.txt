@@ -7,7 +7,7 @@ find_package(ignition-math6 REQUIRED)
 
 add_library(buoyant_object src/BuoyantObject.cc)
 add_library(hydrodynamic_model src/HydrodynamicModel.cc)
-add_library(underwater_object_plugin src/HydrodynamicModel.cc)
+add_library(underwater_object_plugin src/UnderwaterObjectPlugin.cc)
 
 target_include_directories(buoyant_object PUBLIC include)
 target_include_directories(hydrodynamic_model PUBLIC include)

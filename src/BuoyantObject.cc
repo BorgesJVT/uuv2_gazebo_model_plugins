@@ -146,7 +146,7 @@ void BuoyantObject::GetBuoyancyForce(
       curSubmergedHeight = this->boundingBox.ZLength();
     } else {
       curSubmergedHeight = height / 2.0 - z;
-    }  // else
+    }   // else
 
     volume = curSubmergedHeight * this->waterLevelPlaneArea;
     buoyancyForce = ignition::math::Vector3d(0, 0, volume * this->fluidDensity * this->g);
