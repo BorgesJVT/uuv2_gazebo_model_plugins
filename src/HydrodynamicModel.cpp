@@ -14,6 +14,9 @@
 
 #include "uuv2_gazebo_model_plugins/HydrodynamicModel.hpp"
 
+#include <string>
+#include <vector>
+
 #include "gazebo/common/Assert.hh"
 #include "gazebo/physics/Model.hh"
 
@@ -208,7 +211,7 @@ bool HydrodynamicModelFactory::RegisterCreator(
 // Fossen's robot-like equations of motion for underwater vehicles
 //////////////////////////////////////////////////////////////////////////
 
-const std::string HMFossen::IDENTIFIER = "fossen";
+const char * HMFossen::IDENTIFIER = "fossen";
 REGISTER_HYDRODYNAMICMODEL_CREATOR(
   HMFossen,
   &HMFossen::create);
@@ -686,7 +689,7 @@ void HMFossen::Print(std::string _paramName, std::string _message)
 // Hydrodynamic model for a sphere
 //////////////////////////////////////////////////////////////////////////
 
-const std::string HMSphere::IDENTIFIER = "sphere";
+const char * HMSphere::IDENTIFIER = "sphere";
 REGISTER_HYDRODYNAMICMODEL_CREATOR(
   HMSphere,
   &HMSphere::create);
@@ -784,7 +787,7 @@ void HMSphere::Print(std::string _paramName, std::string _message)
 // Hydrodynamic model for a cylinder
 //////////////////////////////////////////////////////////////////////////
 
-const std::string HMCylinder::IDENTIFIER = "cylinder";
+const char * HMCylinder::IDENTIFIER = "cylinder";
 REGISTER_HYDRODYNAMICMODEL_CREATOR(
   HMCylinder,
   &HMCylinder::create);
@@ -965,7 +968,7 @@ void HMCylinder::Print(std::string _paramName, std::string _message)
 //////////////////////////////////////////////////////////////////////////
 // Hydrodynamic model for a spheroid (STILL IN DEVELOPMENT, DON'T USE IT)
 //////////////////////////////////////////////////////////////////////////
-const std::string HMSpheroid::IDENTIFIER = "spheroid";
+const char * HMSpheroid::IDENTIFIER = "spheroid";
 REGISTER_HYDRODYNAMICMODEL_CREATOR(
   HMSpheroid,
   &HMSpheroid::create);
@@ -1080,7 +1083,7 @@ void HMSpheroid::Print(std::string _paramName, std::string _message)
 // Hydrodynamic model for a box (STILL IN DEVELOPMENT, DON'T USE IT)
 //////////////////////////////////////////////////////////////////////////
 
-const std::string HMBox::IDENTIFIER = "box";
+const char * HMBox::IDENTIFIER = "box";
 REGISTER_HYDRODYNAMICMODEL_CREATOR(
   HMBox,
   &HMBox::create);

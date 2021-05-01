@@ -46,7 +46,7 @@ protected:
   /// \brief Returns type of model
 
 public:
-  virtual std::string GetType() = 0;
+  virtual const char * GetType() const = 0;
 
   /// \brief Computation of the hydrodynamic forces
 
@@ -212,7 +212,7 @@ public:
   /// \brief Return (derived) type of hydrodynamic model
 
 public:
-  virtual std::string GetType() {return IDENTIFIER;}
+  virtual const char * GetType() const {return IDENTIFIER;}
 
   /// \brief Prints parameters
 
@@ -246,7 +246,7 @@ protected:
   /// \brief Unique identifier for this geometry
 
 protected:
-  static const std::string IDENTIFIER;
+  static const char * IDENTIFIER;
 
 protected:
   HMFossen(sdf::ElementPtr _sdf, physics::LinkPtr _link);
@@ -370,7 +370,7 @@ public:
   /// \brief Return (derived) type of hydrodynamic model
 
 public:
-  virtual std::string GetType() {return IDENTIFIER;}
+  virtual const char * GetType() {return IDENTIFIER;}
 
   /// \brief Prints parameters
 
@@ -387,7 +387,7 @@ protected:
   /// \brief Unique identifier for this geometry
 
 protected:
-  static const std::string IDENTIFIER;
+  static const char * IDENTIFIER;
 
 protected:
   HMSphere(sdf::ElementPtr _sdf, physics::LinkPtr _link);
@@ -423,7 +423,7 @@ public:
   /// \brief Return (derived) type of hydrodynamic model
 
 public:
-  virtual std::string GetType() {return IDENTIFIER;}
+  virtual const char * GetType() const {return IDENTIFIER;}
 
   /// \brief Prints parameters
 
@@ -440,7 +440,7 @@ private:
   /// \brief Unique identifier for this geometry
 
 protected:
-  static const std::string IDENTIFIER;
+  static const char * IDENTIFIER;
 
 protected:
   HMCylinder(sdf::ElementPtr _sdf, physics::LinkPtr _link);
@@ -492,7 +492,7 @@ public:
   /// \brief Return (derived) type of hydrodynamic model
 
 public:
-  virtual std::string GetType() {return IDENTIFIER;}
+  virtual const char * GetType() const {return IDENTIFIER;}
 
   /// \brief Prints parameters
 
@@ -509,7 +509,7 @@ private:
   /// \brief Unique identifier for this geometry
 
 protected:
-  static const std::string IDENTIFIER;
+  static const char * IDENTIFIER;
 
 protected:
   HMSpheroid(sdf::ElementPtr _sdf, physics::LinkPtr _link);
@@ -540,7 +540,7 @@ public:
   /// \brief Return (derived) type of hydrodynamic model
 
 public:
-  virtual std::string GetType() {return IDENTIFIER;}
+  virtual const char * GetType() const {return IDENTIFIER;}
 
   /// \brief Prints parameters
 
@@ -557,7 +557,7 @@ private:
   /// \brief Unique identifier for this geometry
 
 protected:
-  static const std::string IDENTIFIER;
+  static const char * IDENTIFIER;
 
   /// \brief Constructor
 
