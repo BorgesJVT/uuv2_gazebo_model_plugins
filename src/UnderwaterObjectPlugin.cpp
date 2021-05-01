@@ -27,9 +27,10 @@
 #include "uuv2_gazebo_model_plugins/UnderwaterObjectPlugin.hpp"
 #include "uuv2_gazebo_model_plugins/Def.hpp"
 
-GZ_REGISTER_MODEL_PLUGIN(gazebo::UnderwaterObjectPlugin)
 namespace gazebo
 {
+
+GZ_REGISTER_MODEL_PLUGIN(UnderwaterObjectPlugin)
 
 /////////////////////////////////////////////////
 UnderwaterObjectPlugin::UnderwaterObjectPlugin()

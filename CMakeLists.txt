@@ -5,19 +5,35 @@ find_package(ament_cmake REQUIRED)
 find_package(GAZEBO REQUIRED)
 find_package(ignition-math6 REQUIRED)
 
-add_library(buoyant_object src/BuoyantObject.cpp)
-add_library(hydrodynamic_model src/HydrodynamicModel.cpp)
-add_library(underwater_object_plugin src/UnderwaterObjectPlugin.cpp)
+# BUILD
+add_library(underwater_object_plugin SHARED
+  src/BuoyantObject.cpp
+  src/HydrodynamicModel.cpp
+  src/UnderwaterObjectPlugin.cpp
+)
 
-target_include_directories(buoyant_object PUBLIC include)
-target_include_directories(hydrodynamic_model PUBLIC include)
 target_include_directories(underwater_object_plugin PUBLIC include)
+ament_target_dependencies(underwater_object_plugin PUBLIC GAZEBO ignition-math6)
 
-ament_target_dependencies(buoyant_object PUBLIC GAZEBO)
-ament_target_dependencies(hydrodynamic_model PUBLIC GAZEBO ignition-math6)
-ament_target_dependencies(underwater_object_plugin PUBLIC GAZEBO)
+# EXPORT
+ament_export_libraries(underwater_object_plugin)
+ament_export_dependencies(GAZEBO ignition-math6)
 
-# Auto lint
+# INSTALL
+install(
+  DIRECTORY include/
+  DESTINATION include
+)
+
+install(
+  TARGETS underwater_object_plugin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+
+# TEST
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
