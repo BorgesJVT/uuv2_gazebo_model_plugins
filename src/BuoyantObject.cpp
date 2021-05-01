@@ -18,7 +18,7 @@
 
 #include "gazebo/common/Assert.hh"
 
-#include "uuv2_gazebo_model_plugins/BuoyantObject.hh"
+#include "uuv2_gazebo_model_plugins/BuoyantObject.hpp"
 
 namespace gazebo
 {

@@ -20,8 +20,8 @@
 #include "gazebo/transport/TransportTypes.hh"
 #include "gazebo/transport/transport.hh"
 
-#include "uuv2_gazebo_model_plugins/UnderwaterObjectPlugin.hh"
-#include "uuv2_gazebo_model_plugins/Def.hh"
+#include "uuv2_gazebo_model_plugins/UnderwaterObjectPlugin.hpp"
+#include "uuv2_gazebo_model_plugins/Def.hpp"
 
 GZ_REGISTER_MODEL_PLUGIN(gazebo::UnderwaterObjectPlugin)
 namespace gazebo

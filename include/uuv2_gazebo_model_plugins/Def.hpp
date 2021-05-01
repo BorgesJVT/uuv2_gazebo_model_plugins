@@ -15,8 +15,8 @@
 /// \file Def.hh
 /// \brief General definitions
 
-#ifndef UUV2_GAZEBO_MODEL_PLUGINS__DEF_HH_
-#define UUV2_GAZEBO_MODEL_PLUGINS__DEF_HH_
+#ifndef UUV2_GAZEBO_MODEL_PLUGINS__DEF_HPP_
+#define UUV2_GAZEBO_MODEL_PLUGINS__DEF_HPP_
 
 #include <vector>
 #include <string>
@@ -120,4 +120,4 @@ inline ignition::math::Matrix3d Mat3dToGazebo(const Eigen::Matrix3d & _x)
 
 }  // namespace gazebo
 
-#endif  // UUV2_GAZEBO_MODEL_PLUGINS__DEF_HH_
+#endif  // UUV2_GAZEBO_MODEL_PLUGINS__DEF_HPP_

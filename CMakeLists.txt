@@ -5,9 +5,9 @@ find_package(ament_cmake REQUIRED)
 find_package(GAZEBO REQUIRED)
 find_package(ignition-math6 REQUIRED)
 
-add_library(buoyant_object src/BuoyantObject.cc)
-add_library(hydrodynamic_model src/HydrodynamicModel.cc)
-add_library(underwater_object_plugin src/UnderwaterObjectPlugin.cc)
+add_library(buoyant_object src/BuoyantObject.cpp)
+add_library(hydrodynamic_model src/HydrodynamicModel.cpp)
+add_library(underwater_object_plugin src/UnderwaterObjectPlugin.cpp)
 
 target_include_directories(buoyant_object PUBLIC include)
 target_include_directories(hydrodynamic_model PUBLIC include)

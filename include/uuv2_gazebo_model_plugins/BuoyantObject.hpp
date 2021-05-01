@@ -15,8 +15,8 @@
 /// \file BuoyantObject.hh
 /// \brief Description of a buoyant object
 
-#ifndef UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HH_
-#define UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HH_
+#ifndef UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HPP_
+#define UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HPP_
 
 #include <string>
 #include <map>
@@ -238,4 +238,4 @@ protected:
 };
 }  // namespace gazebo
 
-#endif  // UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HH_
+#endif  // UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HPP_

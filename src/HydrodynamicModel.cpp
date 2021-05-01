@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "uuv2_gazebo_model_plugins/HydrodynamicModel.hh"
+#include "uuv2_gazebo_model_plugins/HydrodynamicModel.hpp"
 
 #include "gazebo/common/Assert.hh"
 #include "gazebo/physics/Model.hh"

@@ -16,8 +16,8 @@
 /// \brief This file contains the definition for different classes of
 /// hydrodynamic models for submerged objects
 
-#ifndef UUV2_GAZEBO_MODEL_PLUGINS__HYDRODYNAMICMODEL_HH_
-#define UUV2_GAZEBO_MODEL_PLUGINS__HYDRODYNAMICMODEL_HH_
+#ifndef UUV2_GAZEBO_MODEL_PLUGINS__HYDRODYNAMICMODEL_HPP_
+#define UUV2_GAZEBO_MODEL_PLUGINS__HYDRODYNAMICMODEL_HPP_
 
 #include <string>
 #include <vector>
@@ -30,8 +30,8 @@
 
 #include "sdf/Element.hh"
 
-#include "uuv2_gazebo_model_plugins/Def.hh"
-#include "uuv2_gazebo_model_plugins/BuoyantObject.hh"
+#include "uuv2_gazebo_model_plugins/Def.hpp"
+#include "uuv2_gazebo_model_plugins/BuoyantObject.hpp"
 
 
 namespace gazebo
@@ -586,4 +586,4 @@ protected:
 };
 }  // namespace gazebo
 
-#endif  // UUV2_GAZEBO_MODEL_PLUGINS__HYDRODYNAMICMODEL_HH_
+#endif  // UUV2_GAZEBO_MODEL_PLUGINS__HYDRODYNAMICMODEL_HPP_
