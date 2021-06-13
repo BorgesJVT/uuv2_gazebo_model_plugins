@@ -51,14 +51,8 @@ BuoyantObject::BuoyantObject(physics::LinkPtr _link)
 
   // TODO(mam0box) Change the way the bounding box is retrieved,
   // it should come from the physics engine but it is still not resolved
-#if GAZEBO_MAJOR_VERSION >= 8
   this->boundingBox = link->BoundingBox();
-#else
-  math::Box bBox = link->GetBoundingBox();
-  this->boundingBox = ignition::math::Box(
-    bBox.min.x, bBox.min.y, bBox.min.z,
-    bBox.max.x, bBox.max.y, bBox.max.z);
-#endif
+
   // Set neutrally buoyant flag to false
   this->neutrallyBuoyant = false;
 }
@@ -72,12 +66,8 @@ void BuoyantObject::SetNeutrallyBuoyant()
   this->neutrallyBuoyant = true;
   // Calculate the equivalent volume for the submerged body
   // so that it will be neutrally buoyant
-  double mass;
-#if GAZEBO_MAJOR_VERSION >= 8
-  mass = this->link->GetInertial()->Mass();
-#else
-  mass = this->link->GetInertial()->GetMass();
-#endif
+  double mass = this->link->GetInertial()->Mass();
+
   this->volume = mass / this->fluidDensity;
   gzmsg << this->link->GetName() << " is neutrally buoyant" << std::endl;
 }
@@ -95,12 +85,7 @@ void BuoyantObject::GetBuoyancyForce(
   buoyancyForce = ignition::math::Vector3d(0, 0, 0);
   buoyancyTorque = ignition::math::Vector3d(0, 0, 0);
 
-  double mass;
-#if GAZEBO_MAJOR_VERSION >= 8
-  mass = this->link->GetInertial()->Mass();
-#else
-  mass = this->link->GetInertial()->GetMass();
-#endif
+  double mass = this->link->GetInertial()->Mass();
 
   if (!this->isSurfaceVessel) {
     if (z + height / 2 > 0 && z < 0) {
@@ -167,12 +152,8 @@ void BuoyantObject::GetBuoyancyForce(
 void BuoyantObject::ApplyBuoyancyForce()
 {
   // Link's pose
-  ignition::math::Pose3d pose;
-#if GAZEBO_MAJOR_VERSION >= 8
-  pose = this->link->WorldPose();
-#else
-  pose = this->link->GetWorldPose().Ign();
-#endif
+  ignition::math::Pose3d pose = this->link->WorldPose();
+
   // Get the buoyancy force in world coordinates
   ignition::math::Vector3d buoyancyForce, buoyancyTorque;
 
@@ -184,24 +165,11 @@ void BuoyantObject::ApplyBuoyancyForce()
   GZ_ASSERT(
     !std::isnan(buoyancyTorque.Length()),
     "Buoyancy torque is invalid");
-  if (!this->isSurfaceVessel)
-#if GAZEBO_MAJOR_VERSION >= 8
-  {this->link->AddForceAtRelativePosition(buoyancyForce, this->GetCoB());
-#else
-  {this->link->AddForceAtRelativePosition(
-      math::Vector3(buoyancyForce.X(), buoyancyForce.Y(), buoyancyForce.Z()),
-      math::Vector3(this->GetCoB().X(), this->GetCoB().Y(), this->GetCoB().Z()));
-#endif
+  if (!this->isSurfaceVessel) {
+    this->link->AddForceAtRelativePosition(buoyancyForce, this->GetCoB());
   } else {
-#if GAZEBO_MAJOR_VERSION >= 8
     this->link->AddForce(buoyancyForce);
     this->link->AddRelativeTorque(buoyancyTorque);
-#else
-    this->link->AddForce(
-      math::Vector3(buoyancyForce.X(), buoyancyForce.Y(), buoyancyForce.Z()));
-    this->link->AddRelativeTorque(
-      math::Vector3(buoyancyTorque.X(), buoyancyTorque.Y(), buoyancyTorque.Z()));
-#endif
   }
 }
 

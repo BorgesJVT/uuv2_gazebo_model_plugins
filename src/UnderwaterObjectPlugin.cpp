@@ -27,10 +27,11 @@
 #include "uuv2_gazebo_model_plugins/UnderwaterObjectPlugin.hpp"
 #include "uuv2_gazebo_model_plugins/Def.hpp"
 
+
+GZ_REGISTER_MODEL_PLUGIN(gazebo::UnderwaterObjectPlugin)
+
 namespace gazebo
 {
-
-GZ_REGISTER_MODEL_PLUGIN(UnderwaterObjectPlugin)
 
 /////////////////////////////////////////////////
 UnderwaterObjectPlugin::UnderwaterObjectPlugin()
@@ -41,11 +42,7 @@ UnderwaterObjectPlugin::UnderwaterObjectPlugin()
 /////////////////////////////////////////////////
 UnderwaterObjectPlugin::~UnderwaterObjectPlugin()
 {
-#if GAZEBO_MAJOR_VERSION >= 8
   this->updateConnection.reset();
-#else
-  event::Events::DisconnectWorldUpdateBegin(this->updateConnection);
-#endif
 }
 
 /////////////////////////////////////////////////
@@ -61,12 +58,9 @@ void UnderwaterObjectPlugin::Load(
 
   // Initialize the transport node
   this->node = transport::NodePtr(new transport::Node());
-  std::string worldName;
-#if GAZEBO_MAJOR_VERSION >= 8
-  worldName = this->world->Name();
-#else
-  worldName = this->world->GetName();
-#endif
+
+  std::string worldName = this->world->Name();
+
   this->node->Init(worldName);
 
   // If fluid topic is available, subscribe to it
@@ -101,13 +95,10 @@ void UnderwaterObjectPlugin::Load(
 
   // Center of buoyancy
   ignition::math::Vector3d cob;
+
   // g
-  double gAcc;
-#if GAZEBO_MAJOR_VERSION >= 8
-  gAcc = std::abs(this->world->Gravity().Z());
-#else
-  gAcc = std::abs(this->world->GetPhysicsEngine()->GetGravity().z);
-#endif
+  double gAcc = std::abs(this->world->Gravity().Z());
+
   this->baseLinkName = std::string();
   if (_sdf->HasElement("link")) {
     for (sdf::ElementPtr linkElem = _sdf->GetElement("link"); linkElem;
@@ -200,14 +191,8 @@ void UnderwaterObjectPlugin::Update(const common::UpdateInfo & _info)
     physics::LinkPtr link = it->first;
     HydrodynamicModelPtr hydro = it->second;
     // Apply hydrodynamic and hydrostatic forces and torques
-    double linearAccel, angularAccel;
-#if GAZEBO_MAJOR_VERSION >= 8
-    linearAccel = link->RelativeLinearAccel().Length();
-    angularAccel = link->RelativeAngularAccel().Length();
-#else
-    linearAccel = link->GetRelativeLinearAccel().GetLength();
-    angularAccel = link->GetRelativeAngularAccel().GetLength();
-#endif
+    double linearAccel = link->RelativeLinearAccel().Length();
+    double angularAccel = link->RelativeAngularAccel().Length();
 
     GZ_ASSERT(
       !std::isnan(linearAccel) && !std::isnan(angularAccel),
@@ -310,12 +295,7 @@ void UnderwaterObjectPlugin::GenWrenchMsg(
   ignition::math::Vector3d _force,
   ignition::math::Vector3d _torque, gazebo::msgs::WrenchStamped & _output)
 {
-  common::Time curTime;
-#if GAZEBO_MAJOR_VERSION >= 8
-  curTime = this->world->SimTime();
-#else
-  curTime = this->world->GetSimTime();
-#endif
+  common::Time curTime = this->world->SimTime();
 
   msgs::Wrench * wrench = _output.mutable_wrench();
   msgs::Time * t = _output.mutable_time();

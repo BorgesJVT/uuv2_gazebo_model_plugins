@@ -381,24 +381,9 @@ void HMFossen::ApplyHydrodynamicForces(
   double _time, const ignition::math::Vector3d & _flowVelWorld)
 {
   // Link's pose
-  ignition::math::Pose3d pose;
-  ignition::math::Vector3d linVel, angVel;
-
-#if GAZEBO_MAJOR_VERSION >= 8
-  pose = this->link->WorldPose();
-  linVel = this->link->RelativeLinearVel();
-  angVel = this->link->RelativeAngularVel();
-#else
-  pose = this->link->GetWorldPose().Ign();
-
-  gazebo::math::Vector3 linVelG, angVelG;
-  linVelG = this->link->GetRelativeLinearVel();
-  angVelG = this->link->GetRelativeAngularVel();
-  linVel = ignition::math::Vector3d(
-    linVelG.x, linVelG.y, linVelG.z);
-  angVel = ignition::math::Vector3d(
-    angVelG.x, angVelG.y, angVelG.z);
-#endif
+  ignition::math::Pose3d pose = this->link->WorldPose();
+  ignition::math::Vector3d linVel = this->link->RelativeLinearVel();
+  ignition::math::Vector3d angVel = this->link->RelativeAngularVel();
 
   // Transform the flow velocity to the BODY frame
   ignition::math::Vector3d flowVel = pose.Rot().RotateVectorReverse(
@@ -1041,12 +1026,7 @@ HMSpheroid::HMSpheroid(
   gzmsg << "alpha=" << alpha << std::endl;
   gzmsg << "beta=" << beta << std::endl;
 
-  double mass;
-#if GAZEBO_MAJOR_VERSION >= 8
-  mass = this->link->GetInertial()->Mass();
-#else
-  mass = this->link->GetInertial()->GetMass();
-#endif
+  double mass = this->link->GetInertial()->Mass();
 
   this->Ma(0, 0) = mass * alpha / (2 - alpha);
   this->Ma(1, 1) = mass * beta / (2 - beta);
