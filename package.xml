@@ -14,6 +14,9 @@
   <depend>ignition-math6</depend>
   <depend>libgazebo11-dev</depend>
 
+  <!-- ros2pkg is required for gazebo_ros but it is not declared as dependency there -->
+  <exec_depend>ros2pkg</exec_depend>
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
   <test_depend>gazebo_ros</test_depend>
