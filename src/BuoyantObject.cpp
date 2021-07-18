@@ -20,11 +20,11 @@
 
 #include "uuv2_gazebo_model_plugins/BuoyantObject.hpp"
 
-namespace gazebo
+namespace uuv2_gazebo_model_plugins
 {
 
 /////////////////////////////////////////////////
-BuoyantObject::BuoyantObject(physics::LinkPtr _link)
+BuoyantObject::BuoyantObject(gazebo::physics::LinkPtr _link)
 {
   GZ_ASSERT(_link != NULL, "Invalid link pointer");
 
@@ -281,4 +281,4 @@ bool BuoyantObject::IsNeutrallyBuoyant()
 {
   return this->neutrallyBuoyant;
 }
-}  // namespace gazebo
+}  // namespace uuv2_gazebo_model_plugins

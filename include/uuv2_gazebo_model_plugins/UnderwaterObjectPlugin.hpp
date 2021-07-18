@@ -28,7 +28,7 @@
 #include "uuv2_gazebo_model_plugins/HydrodynamicModel.hpp"
 #include "uuv2_gazebo_model_plugins/Def.hpp"
 
-namespace gazebo
+namespace uuv2_gazebo_model_plugins
 {
 /// \brief Gazebo model plugin class for underwater objects
 
@@ -116,7 +116,7 @@ protected:
 protected:
   virtual void InitDebug(
     gazebo::physics::LinkPtr _link,
-    gazebo::HydrodynamicModelPtr _hydro);
+    HydrodynamicModelPtr _hydro);
 
   /// \brief Pairs of links & corresponding hydrodynamic models
 
@@ -171,6 +171,6 @@ protected:
 protected:
   std::map<std::string, gazebo::transport::PublisherPtr> hydroPub;
 };
-}  // namespace gazebo
+}  // namespace uuv2_gazebo_model_plugins
 
 #endif  // UUV2_GAZEBO_MODEL_PLUGINS__UNDERWATEROBJECTPLUGIN_HPP_

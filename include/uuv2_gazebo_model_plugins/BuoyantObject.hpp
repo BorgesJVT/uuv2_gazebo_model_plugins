@@ -25,7 +25,7 @@
 
 #define RESTORING_FORCE   "restoring_force"
 
-namespace gazebo
+namespace uuv2_gazebo_model_plugins
 {
 /// \brief Class describing the dynamics of a buoyant object, useful for simple
 /// representations of underwater structures
@@ -34,7 +34,7 @@ class BuoyantObject
   /// \brief Constructor
 
 public:
-  explicit BuoyantObject(physics::LinkPtr _link);
+  explicit BuoyantObject(gazebo::physics::LinkPtr _link);
 
   /// \brief Destructor
 
@@ -194,7 +194,7 @@ protected:
   /// \brief Pointer to the correspondent robot link
 
 protected:
-  physics::LinkPtr link;
+  gazebo::physics::LinkPtr link;
 
   /// \brief If true, the restoring force will be equal to the gravitational
   // force
@@ -236,6 +236,6 @@ protected:
 protected:
   bool isSurfaceVesselFloating;
 };
-}  // namespace gazebo
+}  // namespace uuv2_gazebo_model_plugins
 
 #endif  // UUV2_GAZEBO_MODEL_PLUGINS__BUOYANTOBJECT_HPP_

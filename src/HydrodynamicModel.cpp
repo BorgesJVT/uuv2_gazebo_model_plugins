@@ -20,12 +20,14 @@
 #include "gazebo/common/Assert.hh"
 #include "gazebo/physics/Model.hh"
 
-namespace gazebo
+
+namespace uuv2_gazebo_model_plugins
 {
+
 /////////////////////////////////////////////////
 HydrodynamicModel::HydrodynamicModel(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 : BuoyantObject(_link)
 {
   GZ_ASSERT(_link != NULL, "Invalid link pointer");
@@ -163,7 +165,7 @@ bool HydrodynamicModel::CheckParams(sdf::ElementPtr _sdf)
 
 /////////////////////////////////////////////////
 HydrodynamicModel * HydrodynamicModelFactory::CreateHydrodynamicModel(
-  sdf::ElementPtr _sdf, physics::LinkPtr _link)
+  sdf::ElementPtr _sdf, gazebo::physics::LinkPtr _link)
 {
   GZ_ASSERT(
     _sdf->HasElement("hydrodynamic_model"),
@@ -219,7 +221,7 @@ REGISTER_HYDRODYNAMICMODEL_CREATOR(
 /////////////////////////////////////////////////
 HydrodynamicModel * HMFossen::create(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 {
   return new HMFossen(_sdf, _link);
 }
@@ -227,7 +229,7 @@ HydrodynamicModel * HMFossen::create(
 /////////////////////////////////////////////////
 HMFossen::HMFossen(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 : HydrodynamicModel(_sdf, _link)
 {
   std::vector<double> addedMass(36, 0.0);
@@ -682,7 +684,7 @@ REGISTER_HYDRODYNAMICMODEL_CREATOR(
 /////////////////////////////////////////////////
 HydrodynamicModel * HMSphere::create(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 {
   return new HMSphere(_sdf, _link);
 }
@@ -690,7 +692,7 @@ HydrodynamicModel * HMSphere::create(
 /////////////////////////////////////////////////
 HMSphere::HMSphere(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 : HMFossen(_sdf, _link)
 {
   GZ_ASSERT(
@@ -780,7 +782,7 @@ REGISTER_HYDRODYNAMICMODEL_CREATOR(
 /////////////////////////////////////////////////
 HydrodynamicModel * HMCylinder::create(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 {
   return new HMCylinder(_sdf, _link);
 }
@@ -788,7 +790,7 @@ HydrodynamicModel * HMCylinder::create(
 /////////////////////////////////////////////////
 HMCylinder::HMCylinder(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 : HMFossen(_sdf, _link)
 {
   GZ_ASSERT(
@@ -961,7 +963,7 @@ REGISTER_HYDRODYNAMICMODEL_CREATOR(
 /////////////////////////////////////////////////
 HydrodynamicModel * HMSpheroid::create(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 {
   return new HMSpheroid(_sdf, _link);
 }
@@ -969,7 +971,7 @@ HydrodynamicModel * HMSpheroid::create(
 /////////////////////////////////////////////////
 HMSpheroid::HMSpheroid(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 : HMFossen(_sdf, _link)
 {
   gzerr << "Hydrodynamic model for a spheroid is still in development!" <<
@@ -1071,7 +1073,7 @@ REGISTER_HYDRODYNAMICMODEL_CREATOR(
 /////////////////////////////////////////////////
 HydrodynamicModel * HMBox::create(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 {
   return new HMBox(_sdf, _link);
 }
@@ -1079,7 +1081,7 @@ HydrodynamicModel * HMBox::create(
 /////////////////////////////////////////////////
 HMBox::HMBox(
   sdf::ElementPtr _sdf,
-  physics::LinkPtr _link)
+  gazebo::physics::LinkPtr _link)
 : HMFossen(_sdf, _link)
 {
   gzerr << "Hydrodynamic model for box is still in development!" << std::endl;
@@ -1137,4 +1139,4 @@ void HMBox::Print(std::string _paramName, std::string _message)
     HMFossen::Print(_paramName, _message);
   }
 }
-}  // namespace gazebo
+}  // namespace uuv2_gazebo_model_plugins

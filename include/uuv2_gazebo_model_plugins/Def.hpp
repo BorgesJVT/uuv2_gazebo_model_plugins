@@ -45,7 +45,7 @@ typedef Eigen::Matrix<double, 6, 6> Matrix6d;
 typedef Eigen::Matrix<double, 6, 1> Vector6d;
 }
 
-namespace gazebo
+namespace uuv2_gazebo_model_plugins
 {
 // Pi
 #define PI 3.14159265359
@@ -118,6 +118,6 @@ inline ignition::math::Matrix3d Mat3dToGazebo(const Eigen::Matrix3d & _x)
     _x(2, 0), _x(2, 1), _x(2, 2));
 }
 
-}  // namespace gazebo
+}  // namespace uuv2_gazebo_model_plugins
 
 #endif  // UUV2_GAZEBO_MODEL_PLUGINS__DEF_HPP_

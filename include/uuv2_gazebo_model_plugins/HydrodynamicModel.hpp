@@ -34,14 +34,14 @@
 #include "uuv2_gazebo_model_plugins/BuoyantObject.hpp"
 
 
-namespace gazebo
+namespace uuv2_gazebo_model_plugins
 {
 class HydrodynamicModel : public BuoyantObject
 {
   /// \brief Protected constructor: Use the factory for object creation.
 
 protected:
-  HydrodynamicModel(sdf::ElementPtr _sdf, physics::LinkPtr _link);
+  HydrodynamicModel(sdf::ElementPtr _sdf, gazebo::physics::LinkPtr _link);
 
   /// \brief Returns type of model
 
@@ -144,7 +144,7 @@ typedef boost::shared_ptr<HydrodynamicModel> HydrodynamicModelPtr;
 /// \brief Function pointer to create a certain a model
 typedef HydrodynamicModel * (* HydrodynamicModelCreator)(
   sdf::ElementPtr, \
-  physics::LinkPtr);
+  gazebo::physics::LinkPtr);
 
 /// \brief Factory singleton class that creates a HydrodynamicModel from sdf.
 class HydrodynamicModelFactory
@@ -154,7 +154,7 @@ class HydrodynamicModelFactory
 public:
   HydrodynamicModel * CreateHydrodynamicModel(
     sdf::ElementPtr _sdf,
-    physics::LinkPtr _link);
+    gazebo::physics::LinkPtr _link);
 
   /// \brief Returns the singleton instance of this factory.
 
@@ -207,7 +207,7 @@ class HMFossen : public HydrodynamicModel
 public:
   static HydrodynamicModel * create(
     sdf::ElementPtr _sdf,
-    physics::LinkPtr _link);
+    gazebo::physics::LinkPtr _link);
 
   /// \brief Return (derived) type of hydrodynamic model
 
@@ -249,7 +249,7 @@ protected:
   static const char * IDENTIFIER;
 
 protected:
-  HMFossen(sdf::ElementPtr _sdf, physics::LinkPtr _link);
+  HMFossen(sdf::ElementPtr _sdf, gazebo::physics::LinkPtr _link);
 
   /// \brief Computation of the hydrodynamic forces
 
@@ -365,7 +365,7 @@ class HMSphere : public HMFossen
 public:
   static HydrodynamicModel * create(
     sdf::ElementPtr _sdf,
-    physics::LinkPtr _link);
+    gazebo::physics::LinkPtr _link);
 
   /// \brief Return (derived) type of hydrodynamic model
 
@@ -390,7 +390,7 @@ protected:
   static const char * IDENTIFIER;
 
 protected:
-  HMSphere(sdf::ElementPtr _sdf, physics::LinkPtr _link);
+  HMSphere(sdf::ElementPtr _sdf, gazebo::physics::LinkPtr _link);
 
   /// \brief Sphere radius
 
@@ -418,7 +418,7 @@ class HMCylinder : public HMFossen
 public:
   static HydrodynamicModel * create(
     sdf::ElementPtr _sdf,
-    physics::LinkPtr _link);
+    gazebo::physics::LinkPtr _link);
 
   /// \brief Return (derived) type of hydrodynamic model
 
@@ -443,7 +443,7 @@ protected:
   static const char * IDENTIFIER;
 
 protected:
-  HMCylinder(sdf::ElementPtr _sdf, physics::LinkPtr _link);
+  HMCylinder(sdf::ElementPtr _sdf, gazebo::physics::LinkPtr _link);
 
   /// \brief Length of the cylinder
 
@@ -487,7 +487,7 @@ class HMSpheroid : public HMFossen
 public:
   static HydrodynamicModel * create(
     sdf::ElementPtr _sdf,
-    physics::LinkPtr _link);
+    gazebo::physics::LinkPtr _link);
 
   /// \brief Return (derived) type of hydrodynamic model
 
@@ -512,7 +512,7 @@ protected:
   static const char * IDENTIFIER;
 
 protected:
-  HMSpheroid(sdf::ElementPtr _sdf, physics::LinkPtr _link);
+  HMSpheroid(sdf::ElementPtr _sdf, gazebo::physics::LinkPtr _link);
 
   /// \brief Length of the sphroid
 
@@ -535,7 +535,7 @@ class HMBox : public HMFossen
 public:
   static HydrodynamicModel * create(
     sdf::ElementPtr _sdf,
-    physics::LinkPtr _link);
+    gazebo::physics::LinkPtr _link);
 
   /// \brief Return (derived) type of hydrodynamic model
 
@@ -562,7 +562,7 @@ protected:
   /// \brief Constructor
 
 protected:
-  HMBox(sdf::ElementPtr _sdf, physics::LinkPtr _link);
+  HMBox(sdf::ElementPtr _sdf, gazebo::physics::LinkPtr _link);
 
   /// \brief Drag coefficient
 
@@ -584,6 +584,6 @@ protected:
 protected:
   double height;
 };
-}  // namespace gazebo
+}  // namespace uuv2_gazebo_model_plugins
 
 #endif  // UUV2_GAZEBO_MODEL_PLUGINS__HYDRODYNAMICMODEL_HPP_
