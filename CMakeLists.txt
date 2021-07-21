@@ -4,8 +4,18 @@ project(uuv2_gazebo_model_plugins)
 find_package(ament_cmake REQUIRED)
 find_package(GAZEBO REQUIRED)
 find_package(ignition-math6 REQUIRED)
+find_package(Protobuf REQUIRED)
+
+# GENERATE PROTOBUF MESSAGES
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS msgs/double.proto)
+
 
 # BUILD
+
+# uuv2_gazebo_model_plugins_msgs
+add_library(uuv2_gazebo_model_plugins_msgs ${PROTO_SRCS} ${PROTO_SRCS})
+
+# underwater_object_plugin
 add_library(underwater_object_plugin SHARED
   src/BuoyantObject.cpp
   src/HydrodynamicModel.cpp
@@ -15,9 +25,11 @@ add_library(underwater_object_plugin SHARED
 target_include_directories(underwater_object_plugin PUBLIC include)
 ament_target_dependencies(underwater_object_plugin PUBLIC GAZEBO ignition-math6)
 
+
 # EXPORT
 ament_export_libraries(underwater_object_plugin)
 ament_export_dependencies(GAZEBO ignition-math6)
+
 
 # INSTALL
 install(

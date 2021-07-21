@@ -13,6 +13,7 @@
 
   <depend>ignition-math6</depend>
   <depend>libgazebo11-dev</depend>
+  <depend>protobuf-dev</depend>
 
   <!-- ros2pkg is required for gazebo_ros but it is not declared as dependency there -->
   <exec_depend>ros2pkg</exec_depend>
