@@ -14,6 +14,7 @@ protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS msgs/double.proto)
 
 # uuv2_gazebo_model_plugins_msgs
 add_library(uuv2_gazebo_model_plugins_msgs ${PROTO_SRCS} ${PROTO_SRCS})
+target_link_libraries(uuv2_gazebo_model_plugins_msgs ${PROTOBUF_LIBRARY})
 
 # underwater_object_plugin
 add_library(underwater_object_plugin SHARED
@@ -24,6 +25,15 @@ add_library(underwater_object_plugin SHARED
 
 target_include_directories(underwater_object_plugin PUBLIC include)
 ament_target_dependencies(underwater_object_plugin PUBLIC GAZEBO ignition-math6)
+
+# # thruster plugin
+add_library(thruster_plugin SHARED
+  src/ThrusterConversionFunction.cpp
+  src/ThrusterDynamics.cpp
+)
+
+target_include_directories(thruster_plugin PUBLIC include)
+ament_target_dependencies(thruster_plugin PUBLIC GAZEBO ignition-math6)
 
 
 # EXPORT
