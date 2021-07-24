@@ -13,7 +13,7 @@ protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS msgs/double.proto)
 # BUILD
 
 # uuv2_gazebo_model_plugins_msgs
-add_library(uuv2_gazebo_model_plugins_msgs ${PROTO_SRCS} ${PROTO_SRCS})
+add_library(uuv2_gazebo_model_plugins_msgs ${PROTO_SRCS} ${PROTO_PROTO_HDRS})
 target_link_libraries(uuv2_gazebo_model_plugins_msgs ${PROTOBUF_LIBRARY})
 
 # underwater_object_plugin
@@ -30,9 +30,10 @@ ament_target_dependencies(underwater_object_plugin PUBLIC GAZEBO ignition-math6)
 add_library(thruster_plugin SHARED
   src/ThrusterConversionFunction.cpp
   src/ThrusterDynamics.cpp
+  src/ThrusterPlugin.cpp
 )
 
-target_include_directories(thruster_plugin PUBLIC include)
+target_include_directories(thruster_plugin PUBLIC include ${CMAKE_CURRENT_BINARY_DIR})
 ament_target_dependencies(thruster_plugin PUBLIC GAZEBO ignition-math6)
 
 
@@ -48,10 +49,16 @@ install(
 )
 
 install(
-  TARGETS underwater_object_plugin
+  TARGETS underwater_object_plugin uuv2_gazebo_model_plugins_msgs thruster_plugin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin
+)
+
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/
+  DESTINATION include
+  FILES_MATCHING PATTERN "*.pb.*"
+  PATTERN "*~" EXCLUDE
 )
 
 
